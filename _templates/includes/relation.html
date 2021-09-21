@@ -1,6 +1,6 @@
 <div class = "related" role = "navigation" aria-label = "related navigation">
     <span>
-        {%- for elem in [next, prev] %}
+        {%- for elem in [prev, next] %}
             {%- set name = ("Next" if next == elem else "Prev") %}
             {%- if elem %}<span><a href = "{{ elem.link|e }}">{{ name }}</a> | </span>{%- endif %}
         {%- endfor %}
