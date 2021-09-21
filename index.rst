@@ -16,3 +16,4 @@ Honknet Documentation
    quickstart-js.md
    server-setup.md
    configuration-py.md
+   api.md

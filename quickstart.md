@@ -10,7 +10,7 @@ Before you begin with the rest of the guide, it is recommended that you clone
 the Honknet repositories beforehand depending on your use case.  
 
 Here is an example clone of the client:
-```
+```none
 git clone https://github.com/honk-net/honknet.py honknet
 git clone https://github.com/honk-net/py-plugins plugins
 
@@ -49,6 +49,6 @@ To change this, check the [configuration](configuration-py.md), or read [Setting
 
 Additionally, you can install `iikp` **if you want a command bar**.  
 The server can afterwards be ran like a normal Python executable:
-```
+```none
 python3 server.py
 ```

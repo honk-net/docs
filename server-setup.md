@@ -14,7 +14,7 @@ Before the server is configured, all the dependencies first need to
 be installed. This includes Python, Git, and a few more.  
 
 This should install all of them on UNIX-like OSes:
-```
+```none
 sudo apt install git python3 python3-pip
 python3 -m pip install iikp  # For a working command bar
 ```
@@ -28,7 +28,7 @@ On Windows, these should be installed manually:
 
 Before we can configure the server, we first need to clone the repository.  
 This script will clone the repo, seperate the server, and rename itself:
-```
+```none
 git clone https://github.com/honk-net/honknet.py honknet
 cd honknet
 
@@ -57,7 +57,7 @@ It should contain a `host`, `port`, and most important, `name`, like so:
 To test if the requirements and config are setup right, give the server
 a test run by calling `python3 server.py`.  
 If everything goes well, you should see the following:
-```
+```none
 Server running on HOST:PORT..
 > _
 ```
