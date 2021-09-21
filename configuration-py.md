@@ -28,7 +28,7 @@ Filename: `config.json`
 Available options:
 ```json
 {
-    "host": "The host to bind to (default: "0.0.0.0")",
+    "host": "The host to bind to (default: '0.0.0.0')",
     "port": "The port to bind to (default: 2075) (int)",
     "name": "The server name to use (default: 'Server')"
 }
