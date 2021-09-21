@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{%- set reldelim1 = reldelim1 is not defined and ' &#187;' or reldelim1 %}
+{%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
+{%- if not embedded and docstitle %}
+    {%- set titlesuffix = " &#8212; "|safe + docstitle|e %}
+{%- else %}
+    {%- set titlesuffix = "" %}
+{%- endif %}
+{%- macro script() %}
+    {%- for js in script_files %}
+        {{ js_tag(js) }}
+    {%- endfor %}
+{%- endmacro %}
+{%- macro css() %}
+    {%- for css in css_files %}
+        {%- if css|attr("filename") %}
+            {{ css_tag(css) }}
+        {%- else %}
+            <link rel = "stylesheet" href = "{{ pathto(css, 1)|e }}" type = "text/css" />
+        {%- endif %}
+    {%- endfor %}
+{%- endmacro %}
+<html lang = "en">
+    <head>
+        <meta charset = "utf8" />
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+        {{- metatags }}
+
+        <!-- JS -->
+        {%- if not embedded %}{%- block scripts %}{{- script() }}{%- endblock %}{%- endif %}
+
+        <!-- Links -->
+        {%- if pageurl %}<link rel = "canonical" href = "{{ pageurl|e }}" />{%- endif %}
+        {%- block linktags %}
+            {%- if hasdoc("genindex") %}
+                <link rel = "index" title = "{{ _('Index') }}" href = "{{ pathto('genindex') }}" />
+            {%- endif %}
+            {%- if hasdoc("search") %}
+                <link rel = "search" title = "{{ _('Search') }}" href = "{{ pathto('search') }}" />
+            {%- endif %}
+        {%- endblock %}
+
+        <!-- CSS -->
+        {%- block css %}{{- css() }}{%- endblock %}
+        <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel = "stylesheet">
+
+        {%- block extrahead %} {% endblock %}
+        <link rel = "shortcut icon" href = "{{ favicon_url|e }}"/>
+        <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    </head>
+    <body>
+        <div class = "top">
+            <span class = "top-elem top-left">Honknet</span>
+            <a href = "https://github.com/honk-net" class = "top-elem top-right"><i class = "fab fa-github"></i></a>
+            <a href = "https://discord.gg/mr8CtGcpvG" class = "top-elem top-right"><i class = "fab fa-discord"></i></a>
+        </div>
+        <div class = "related" role = "navigation" aria-label = "related navigation">
+            <span>
+                {%- for rellink in rellinks %}
+                    <span class = "right" {% if loop.first %} style = "margin-right: 10px" {% endif %}>
+                    <a href = "{{ pathto(rellink[0])|e }}" title = "{{ rellink[1]|striptags|e }}"
+                            {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+                    {%- if not loop.first %}{{ reldelim2 }}{% endif %}</span>
+                {%- endfor %}
+                {%- block rootrellink %}
+                    <span class = "nav-item nav-item-0"><a href = "{{ pathto(root_doc)|e }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</span>
+                {%- endblock %}
+                {%- for parent in parents %}
+                    <span class = "nav-item nav-item-{{ loop.index }}"><a href = "{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</span>
+                {%- endfor %}
+                <span class = "nav-item nav-item-this"><a href = "{{ link|e }}">{{ title }}</a></span>
+                {%- block relbaritems %} {% endblock %}
+            </span>
+        </div>
+        {%- block content %}
+            {%- block sidebar1 %}{% endblock %}
+            <div class = "document">
+                {%- block document %}
+                    <div class = "documentwrapper">
+                        {%- if render_sidebar %}
+                            <div class = "bodywrapper">
+                        {%- endif %}
+                            <div class = "body" role = "main">
+                        {% block body %} {% endblock %}
+                        <div class = "clearer"></div>
+                    </div>
+                    {%- if render_sidebar %}</div>{%- endif %}
+                    </div>
+                {%- endblock %}
+                <div class = "sphinxsidebar" role = "navigation" aria-label = "main navigation">
+                    <div class = "sphinxsidebarwrapper">
+                        {%- block sidebarlogo %}
+                            {%- if logo_url %}
+                                <p class = "logo"><a href = "{{ pathto(root_doc)|e }}">
+                                    <img class = "logo" src = "{{ logo_url|e }}" alt = "Logo"/>
+                                </a></p>
+                            {%- endif %}
+                        {%- endblock %}
+                        {%- for sidebartemplate in sidebars %}
+                            {%- include sidebartemplate %}
+                        {%- endfor %}
+                    </div>
+                </div>
+                <div class = "clearer"></div>
+            </div>
+        {%- endblock %}
+        <footer>© {{ copyright }}</footer>
+    </body>
+</html>
