@@ -1,0 +1,5 @@
+# May show up, who knows
+__pycache__/
+
+# Hide build
+_build/
