@@ -82,6 +82,15 @@ A status code of 202 means to **ignore the payload**, so no need to worry about 
 however, during a system message (such as a leave/join), `affects` will be the user  
 that joined or left, while `author` will be the server's user object.
 
+---
+
+Since TCP is a stream-based protocol, special measures were implemented to prevent  
+multiple messages/events from merging into unreadable JSON.  
+
+To do this, every JSON payload sent from a server, will end with `\0x55`.  
+This means that after you receive all data, you should split by `\0x55`, and treat  
+each item as a message.
+
 ## Events & special cases
 
 To assist with bot making and certain clients, the `type` field is provided with responses.  
