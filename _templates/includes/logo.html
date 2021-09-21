@@ -1,0 +1,7 @@
+{%- block sidebarlogo %}
+    {%- if logo_url %}
+        <p class = "logo"><a href = "{{ pathto(root_doc)|e }}">
+            <img class = "logo" src = "{{ logo_url|e }}" alt = "Logo"/>
+        </a></p>
+    {%- endif %}
+{%- endblock %}

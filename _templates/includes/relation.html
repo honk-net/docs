@@ -1,0 +1,16 @@
+<div class = "related" role = "navigation" aria-label = "related navigation">
+    <span>
+        {%- for elem in [next, prev] %}
+            {%- set name = ("Next" if next == elem else "Prev") %}
+            {%- if elem %}<span><a href = "{{ elem.link|e }}">{{ name }}</a> |</span>{%- endif %}
+        {%- endfor %}
+        {%- block rootrellink %}
+            <span class = "nav-item nav-item-0"><a href = "{{ pathto(root_doc)|e }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</span>
+        {%- endblock %}
+        {%- for parent in parents %}
+            <span class = "nav-item nav-item-{{ loop.index }}"><a href = "{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</span>
+        {%- endfor %}
+        <span class = "nav-item nav-item-this"><a href = "{{ link|e }}">{{ title }}</a></span>
+        {%- block relbaritems %} {% endblock %}
+    </span>
+</div>
