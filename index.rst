@@ -12,4 +12,7 @@ Honknet Documentation
 .. toctree::
    :maxdepth: 2
 
-   test.md
+   quickstart.md
+   quickstart-js.md
+   server-setup.md
+   configuration-py.md

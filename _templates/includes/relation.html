@@ -2,7 +2,7 @@
     <span>
         {%- for elem in [next, prev] %}
             {%- set name = ("Next" if next == elem else "Prev") %}
-            {%- if elem %}<span><a href = "{{ elem.link|e }}">{{ name }}</a> |</span>{%- endif %}
+            {%- if elem %}<span><a href = "{{ elem.link|e }}">{{ name }}</a> | </span>{%- endif %}
         {%- endfor %}
         {%- block rootrellink %}
             <span class = "nav-item nav-item-0"><a href = "{{ pathto(root_doc)|e }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</span>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "utf8" />
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+
+        <!-- JS -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+
+        <!-- Links -->
+                <link rel = "index" title = "Index" href = "genindex.html" />
+                <link rel = "search" title = "Search" href = "search.html" />
+
+        <!-- CSS -->
+            <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+            <link rel="stylesheet" type="text/css" href="_static/style.css" />
+        <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel = "stylesheet"> 
+        <link rel = "shortcut icon" href = "_static/favicon.ico"/>
+        <title>Setting up a server &#8212; Honknet</title>
+    </head>
+    <body>
+        <div class = "top">
+            <span class = "top-elem top-left">Honknet</span>
+            <a href = "https://github.com/honk-net" class = "top-elem top-right"><i class = "fab fa-github"></i></a>
+            <a href = "https://discord.gg/mr8CtGcpvG" class = "top-elem top-right"><i class = "fab fa-discord"></i></a>
+        </div><div class = "related" role = "navigation" aria-label = "related navigation">
+    <span><span><a href = "configuration-py.html">Next</a> | </span><span><a href = "quickstart-js.html">Prev</a> | </span>
+            <span class = "nav-item nav-item-0"><a href = "index.html">Honknet</a> &#187;</span>
+        <span class = "nav-item nav-item-this"><a href = "">Setting up a server</a></span> 
+    </span>
+</div>
+            <div class = "document">
+                    <div class = "documentwrapper">
+                        <div class = "body" role = "main">
+                        
+  <section class="tex2jax_ignore mathjax_ignore" id="setting-up-a-server">
+<h1>Setting up a server<a class="headerlink" href="#setting-up-a-server" title="Permalink to this headline">¶</a></h1>
+<p>Setting up a proper Honknet server is fairly easy and only takes a few minutes.<br />
+Before you begin, ensure you have the following:</p>
+<ul class="simple">
+<li><p>5-10 minutes</p></li>
+<li><p>Python 3.7+ (3.9+ recommended)</p></li>
+<li><p>Git</p></li>
+<li><p>Access to your router admin panel</p></li>
+<li><p>OPTIONALLY: a domain from a service like <a class="reference external" href="https://cloudflare.com">Cloudflare</a></p></li>
+</ul>
+<section id="installing-requirements">
+<h2>Installing requirements<a class="headerlink" href="#installing-requirements" title="Permalink to this headline">¶</a></h2>
+<p>Before the server is configured, all the dependencies first need to<br />
+be installed. This includes Python, Git, and a few more.</p>
+<p>This should install all of them on UNIX-like OSes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">git</span> <span class="n">python3</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">iikp</span>  <span class="c1"># For a working command bar</span>
+</pre></div>
+</div>
+<p>On Windows, these should be installed manually:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://git-scm.org">Install Git</a></p></li>
+<li><p><a class="reference external" href="https://python.org">Install Python</a></p></li>
+<li><p>Install iikp: <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">iikp</span></code></p></li>
+</ul>
+</section>
+<section id="initial-configuration">
+<h2>Initial configuration<a class="headerlink" href="#initial-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Before we can configure the server, we first need to clone the repository.<br />
+This script will clone the repo, seperate the server, and rename itself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">honk</span><span class="o">-</span><span class="n">net</span><span class="o">/</span><span class="n">honknet</span><span class="o">.</span><span class="n">py</span> <span class="n">honknet</span>
+<span class="n">cd</span> <span class="n">honknet</span>
+
+<span class="c1"># Remove everything EXCEPT for the server</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">bots</span> <span class="n">client</span>
+<span class="n">mv</span> <span class="n">server</span><span class="o">/*</span> <span class="o">./</span>
+
+<span class="n">cd</span> <span class="o">../</span>
+<span class="n">mv</span> <span class="n">honknet</span> <span class="n">honknet</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>Although a script is provided, this can be done manually by hand if desired.<br />
+The only requirement is that you have the server folder.</p>
+<hr class="docutils" />
+<p>After the server is cloned, you should setup a simple <code class="docutils literal notranslate"><span class="pre">config.json</span></code>.<br />
+It should contain a <code class="docutils literal notranslate"><span class="pre">host</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>, and most important, <code class="docutils literal notranslate"><span class="pre">name</span></code>, like so:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">2075</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cool Server&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To test if the requirements and config are setup right, give the server
+a test run by calling <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">server.py</span></code>.<br />
+If everything goes well, you should see the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Server</span> <span class="n">running</span> <span class="n">on</span> <span class="n">HOST</span><span class="p">:</span><span class="n">PORT</span><span class="o">..</span>
+<span class="o">&gt;</span> <span class="n">_</span>
+</pre></div>
+</div>
+</section>
+<section id="port-forwarding">
+<h2>Port Forwarding<a class="headerlink" href="#port-forwarding" title="Permalink to this headline">¶</a></h2>
+<p>An essential step to having a properly maintained server is port forwarding properly.<br />
+This ensures your server is accessible to the outside world. If you wish for this to<br />
+be a <strong>local</strong> server, you can skip these last sections.</p>
+<p>Port forwarding can sometimes be very hard to do, as router manufacturers are<br />
+inconsistent, so no router login looks the same, nor functions the same.</p>
+<p>In simple terms, here is what you need to do:</p>
+<ul class="simple">
+<li><p>Login to your router admin panel (typically <code class="docutils literal notranslate"><span class="pre">192.168.0.1</span></code> or <code class="docutils literal notranslate"><span class="pre">10.0.0.1</span></code>)</p></li>
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">Port</span> <span class="pre">Forwarding</span></code> section</p></li>
+<li><p>Create a new “rule” which should have the following:</p>
+<ul>
+<li><p>Public port: [insert server port]</p></li>
+<li><p>Private port: [insert server port]</p></li>
+<li><p>Local IP (LAN) address: [insert server local ip]</p></li>
+</ul>
+</li>
+<li><p>Save your changes; and</p></li>
+<li><p><strong>Optionally</strong>, reboot your router</p></li>
+</ul>
+</section>
+<section id="using-a-domain">
+<h2>Using a Domain<a class="headerlink" href="#using-a-domain" title="Permalink to this headline">¶</a></h2>
+<p>By this point of the guide, you should have a functioning Honknet.py server;<br />
+However, you might want to use a domain name rather than an IP to connect.<br />
+This is can done via a DNS service like <a class="reference external" href="https://cloudflare.com">Cloudflare</a>.</p>
+<p>To do so, grab your public IP (this can be done by googling <code class="docutils literal notranslate"><span class="pre">what</span> <span class="pre">is</span> <span class="pre">my</span> <span class="pre">ip</span></code>)<br />
+and create a DNS record for your domain. It should be for either your root domain<br />
+or a subdomain (your choice), and its destination should be your public ip.</p>
+<p><strong>IMPORTANT: if your DNS provider has a proxy option, disable it!</strong><br />
+<strong>This also affects cloudflare ^</strong></p>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>To test if you server is setup properly, simply launch <code class="docutils literal notranslate"><span class="pre">server.py</span></code>.<br />
+You should then be able to connect to it via a Honknet client.</p>
+<p>Don’t have a client? <a class="reference internal" href="quickstart.html"><span class="doc std std-doc">Read the quickstart</span></a>.<br />
+After that, you’re done, congratulations!</p>
+</section>
+</section>
+
+
+                        <div class = "clearer"></div>
+                    </div>
+                    </div>
+                <div class = "sphinxsidebar" role = "navigation" aria-label = "main navigation">
+                    <div class = "sphinxsidebarwrapper">
+                        <div style = "padding-top: var(--topbar-height);"></div>
+    <div id = "searchbox" style = "display: none" role = "search">
+        <h3 id = "searchlabel">Quick search</h3>
+        <div class = "searchformwrapper">
+            <form class = "search" action = "search.html" method = "get">
+                <input type = "text" name = "q" aria-labelledby = "searchlabel" autocomplete = "off" autocorrect = "off" autocapitalize = "off" spellcheck = "false" required />
+                <input type = "submit" value = "Go" />
+            </form>
+        </div>
+    </div>
+    <script>$('#searchbox').show(0);</script>
+    <h4>Previous topic</h4>
+    <p class = "topless">
+        <a href = "quickstart-js.html"
+            title = "previous chapter">Quick Start (JS)</a>
+    </p>
+    <h4>Next topic</h4>
+    <p class = "topless">
+        <a href = "configuration-py.html"
+            title = "next chapter">Configuration (Honknet.py)</a>
+    </p><h4 class = "toc-begin"><a href = "index.html">Honknet ToC</a></h4>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-js.html">Quick Start (JS)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up a server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-requirements">Installing requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-configuration">Initial configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#port-forwarding">Port Forwarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-domain">Using a Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-py.html">Configuration (Honknet.py)</a></li>
+</ul>
+
+                    </div>
+                </div>
+                <div style = "padding-top: var(--topbar-height);"></div>
+                <div class = "clearer"></div>
+            </div>
+        <footer>© 2021; iiPython + DmmD</footer>
+    </body>
+</html>

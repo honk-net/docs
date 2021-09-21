@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "utf8" />
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+
+        <!-- JS -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+
+        <!-- Links -->
+                <link rel = "index" title = "Index" href = "genindex.html" />
+                <link rel = "search" title = "Search" href = "search.html" />
+
+        <!-- CSS -->
+            <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+            <link rel="stylesheet" type="text/css" href="_static/style.css" />
+        <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel = "stylesheet"> 
+        <link rel = "shortcut icon" href = "_static/favicon.ico"/>
+        <title>Configuration (Honknet.py) &#8212; Honknet</title>
+    </head>
+    <body>
+        <div class = "top">
+            <span class = "top-elem top-left">Honknet</span>
+            <a href = "https://github.com/honk-net" class = "top-elem top-right"><i class = "fab fa-github"></i></a>
+            <a href = "https://discord.gg/mr8CtGcpvG" class = "top-elem top-right"><i class = "fab fa-discord"></i></a>
+        </div><div class = "related" role = "navigation" aria-label = "related navigation">
+    <span><span><a href = "server-setup.html">Prev</a> | </span>
+            <span class = "nav-item nav-item-0"><a href = "index.html">Honknet</a> &#187;</span>
+        <span class = "nav-item nav-item-this"><a href = "">Configuration (Honknet.py)</a></span> 
+    </span>
+</div>
+            <div class = "document">
+                    <div class = "documentwrapper">
+                        <div class = "body" role = "main">
+                        
+  <section class="tex2jax_ignore mathjax_ignore" id="configuration-honknet-py">
+<h1>Configuration (Honknet.py)<a class="headerlink" href="#configuration-honknet-py" title="Permalink to this headline">¶</a></h1>
+<p>Honknet.py provides various configuration options for both the client and the server.<br />
+All options are accessible via a simple <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file.</p>
+<p>This page documents <strong>most</strong> available config options.<br />
+Please note: <strong>this might not always be up to date</strong>.</p>
+<section id="client-configuration">
+<h2>Client configuration<a class="headerlink" href="#client-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Filename: <code class="docutils literal notranslate"><span class="pre">config.json</span></code><br />
+Available options:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;The username to send to the server&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autoconnect&quot;</span><span class="p">:</span> <span class="s2">&quot;An address to automatically connect to&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timeformat&quot;</span><span class="p">:</span> <span class="s2">&quot;Time format to use; can be either 12h/24h/utc12h/utc24h (default: 24h)&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If required configuration options are missing (or no <code class="docutils literal notranslate"><span class="pre">config.json</span></code> exists), the<br />
+client will prompt the user for the values.</p>
+<ul class="simple">
+<li><p>Additionally, it will create a <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file if the user chooses to.</p></li>
+</ul>
+</section>
+<section id="server-configuration">
+<h2>Server configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Filename: <code class="docutils literal notranslate"><span class="pre">config.json</span></code><br />
+Available options:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;The host to bind to (default: &quot;</span><span class="mf">0.0.0.0</span><span class="s2">&quot;)&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;The port to bind to (default: 2075) (int)&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The server name to use (default: &#39;Server&#39;)&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                        <div class = "clearer"></div>
+                    </div>
+                    </div>
+                <div class = "sphinxsidebar" role = "navigation" aria-label = "main navigation">
+                    <div class = "sphinxsidebarwrapper">
+                        <div style = "padding-top: var(--topbar-height);"></div>
+    <div id = "searchbox" style = "display: none" role = "search">
+        <h3 id = "searchlabel">Quick search</h3>
+        <div class = "searchformwrapper">
+            <form class = "search" action = "search.html" method = "get">
+                <input type = "text" name = "q" aria-labelledby = "searchlabel" autocomplete = "off" autocorrect = "off" autocapitalize = "off" spellcheck = "false" required />
+                <input type = "submit" value = "Go" />
+            </form>
+        </div>
+    </div>
+    <script>$('#searchbox').show(0);</script>
+    <h4>Previous topic</h4>
+    <p class = "topless">
+        <a href = "server-setup.html"
+            title = "previous chapter">Setting up a server</a>
+    </p><h4 class = "toc-begin"><a href = "index.html">Honknet ToC</a></h4>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-js.html">Quick Start (JS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server-setup.html">Setting up a server</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration (Honknet.py)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#client-configuration">Client configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#server-configuration">Server configuration</a></li>
+</ul>
+</li>
+</ul>
+
+                    </div>
+                </div>
+                <div style = "padding-top: var(--topbar-height);"></div>
+                <div class = "clearer"></div>
+            </div>
+        <footer>© 2021; iiPython + DmmD</footer>
+    </body>
+</html>
