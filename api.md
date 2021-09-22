@@ -106,15 +106,15 @@ which is already described at the end of JSON and Merge Protection.
 
 ## Status Codes
     CODE               NAME                                            DESC
-    100            SUCCESS                    Action completed successfully
-    101          USER_JOIN                                A user has joined
-    102          USER_LEFT                                  A user has left
-    103         CONN_ESTAB              The connection has been established
-    200           MSG_SENT                          A message has been sent
-    201       SERVER_NOTIF                     A server notif has been sent
-    202             IGNORE                      Ignore the received payload
-    300         SERVER_ERR                       A server error has occured
-    301          USRNM_ERR                     An invalid username was sent
-    302            MSG_ERR                          A message error occured
-    305          USER_KICK                             You have been kicked
-    306           USER_BAN                             You have been banned
+    100             SUCCESS                   Action completed successfully
+    101           USER_JOIN                               A user has joined
+    102           USER_LEFT                                 A user has left
+    103          CONN_ESTAB             The connection has been established
+    200            MSG_SENT                         A message has been sent
+    201        SERVER_NOTIF                    A server notif has been sent
+    202              IGNORE                     Ignore the received payload
+    300          SERVER_ERR                      A server error has occured
+    301           USRNM_ERR                    An invalid username was sent
+    302             MSG_ERR                         A message error occured
+    305           USER_KICK                            You have been kicked
+    306            USER_BAN                            You have been banned
